@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     # Custom apps
     'users',
     'products',
-    # 'cart',
+    'cart',
     # 'orders',
     # 'core',
 ]
