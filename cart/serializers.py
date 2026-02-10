@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Cart
 from products.serializers import ProductSerializer
 
+    
 class CartSerializer(serializers.ModelSerializer):
     product_detail = ProductSerializer(source='product', read_only=True)
     total_price = serializers.DecimalField(max_digits=10, decimal_places=2, read_only=True)
@@ -17,14 +18,8 @@ class CartSerializer(serializers.ModelSerializer):
         return value
     
     def validate(self, data):
-        product = data.get('product')
-        quantity = data.get('quantity', 1)
-        
-        if product and not product.is_available(quantity):
-            raise serializers.ValidationError(
-                f'Only {product.stock} items available in stock'
-            )
         return data
+
 
 class CartUpdateSerializer(serializers.ModelSerializer):
     class Meta:

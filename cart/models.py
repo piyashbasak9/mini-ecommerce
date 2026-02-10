@@ -2,6 +2,7 @@ from django.db import models
 from users.models import User
 from products.models import Product
 
+
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cart_items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
@@ -20,7 +21,4 @@ class Cart(models.Model):
         return self.product.price * self.quantity
     
     def save(self, *args, **kwargs):
-        # Check stock availability before adding to cart
-        if not self.product.is_available(self.quantity):
-            raise ValueError(f'Only {self.product.stock} items available in stock')
         super().save(*args, **kwargs)

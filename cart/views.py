@@ -24,17 +24,12 @@ class CartListView(generics.ListCreateAPIView):
         ).first()
         
         if cart_item:
-            # Update quantity if item exists
             cart_item.quantity += quantity
-            if product.is_available(cart_item.quantity):
-                cart_item.save()
-            else:
-                raise ValidationError(
-                    f'Cannot add {quantity} more items. Only {product.stock - cart_item.quantity + quantity} available.'
-                )
+            cart_item.save()
         else:
             # Create new cart item
             serializer.save(user=self.request.user)
+
 
 class CartDetailView(generics.RetrieveUpdateDestroyAPIView):
     """View, update or remove cart item"""
