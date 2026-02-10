@@ -32,7 +32,7 @@ class OrderCreateView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
         
-        # ✅ Collect all products with insufficient stock
+        # Collect all products with insufficient stock
         insufficient_stock_items = []
         
         for cart_item in cart_items:
