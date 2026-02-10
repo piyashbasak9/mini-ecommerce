@@ -26,7 +26,7 @@ This project implements user authentication, product management, shopping cart f
 ### Setup Instructions
 
 #### 1. Clone the Repository
-```bash
+
 git clone <repository-url>
 cd mini-ecommerce
 
