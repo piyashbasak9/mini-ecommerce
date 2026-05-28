@@ -17,6 +17,9 @@ class ProductListCreateView(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save()
 
+    def cal(self, serializer):
+        pass
+
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     """Retrieve, update or delete a product (Admin only for update/delete)"""
     queryset = Product.objects.all()
